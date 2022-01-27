@@ -44,9 +44,8 @@ export const usePersistForm = <T = unknown>(settings: UsePersistFormProps<T>) =>
         setValue(key, value, { shouldValidate, shouldDirty });
         restoredData[key] = value;
       }
+      if (onRestored) onRestored(restoredData);
     }
-
-    if (onRestored) onRestored(restoredData);
   }, [formName, setValue, shouldValidate, shouldDirty]);
 
   useEffect(() => {
